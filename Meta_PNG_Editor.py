@@ -12,8 +12,6 @@ with open("metadata.txt", "w") as f:
         image.close()
 '''
 
-counter = 1
-
 input_dir = os.path.dirname(os.path.abspath(__file__))
 
 choice = input(
@@ -27,16 +25,17 @@ choice = input(
 
 
 def remove_metadata():
+  counter = 1
   for filename in os.listdir(input_dir):
     # Check if the file is a PNG file
     if filename.endswith(".png"):
-        # Open the image file
-        image_path = os.path.join(input_dir, filename)
-        image = Image.open(image_path)
-        new_filename = f"pic{counter}.png"
-        image.save(new_filename)
-        image.close()
-        counter += 1
+      # Open the image file
+      image_path = os.path.join(input_dir, filename)
+      image = Image.open(image_path)
+      new_filename = f"pic{counter}.png"
+      image.save(new_filename)
+      image.close()
+      counter += 1
 
 
 def print_menu():
