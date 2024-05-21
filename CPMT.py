@@ -6,6 +6,9 @@
 | $$    $$| $$      | $$|  $ | $$   | $$
 |  $$$$$$/| $$      | $$|    | $$   | $$
  |______/ |__/      |__/     |__/   |__/
+        ComfyUI PNG Metadata Tool
+which can remove/read generation metadata.
+===========================================
 ver.1.0
 '''
 
