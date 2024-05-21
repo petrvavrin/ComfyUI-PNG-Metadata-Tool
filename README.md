@@ -1,1 +1,3 @@
-# ComfyUI-PNG-Metadata-Tool
+# ComfyUI PNG Metadata Tool
+PNG Metadata Tool
+which can remove/read ComfyUI generation metadata.
