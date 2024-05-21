@@ -12,6 +12,8 @@ which can remove/read generation metadata.
 ver.1.0
 '''
 
+# Add path argument, choice for create new files or replace
+
 from PIL import Image
 import json
 import os
