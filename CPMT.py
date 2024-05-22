@@ -9,7 +9,7 @@
         ComfyUI PNG Metadata Tool
 which can remove/read generation metadata.
 ===========================================
-ver.1.0
+ver.1.1
 '''
 
 # Add path argument, choice for create new files or replace
@@ -17,10 +17,10 @@ ver.1.0
 from PIL import Image
 import json
 import os
+import sys
 
-
-#######################################
 '''
+#######################################
 with open("metadata.txt", "w") as f:
         image = Image.open("pic.png")
         metadata = image.info
@@ -28,9 +28,9 @@ with open("metadata.txt", "w") as f:
         f.write(result)
         f.close()
         image.close()
-'''
 #######################################
-input_dir = os.path.dirname(os.path.abspath(__file__))
+'''
+#input_dir = os.path.dirname(os.path.abspath(__file__))
 
 choice = input(
   "------------------------------------------\n"
@@ -43,18 +43,25 @@ choice = input(
 
 
 def remove_metadata():
+  parent_dir = input('Enter output parent directory path: ')
+  dir_name = input('Enter output directory name: ')
 
-  for filename in os.listdir(input_dir):
+  path = os.path.join(parent_dir, dir_name)
+  os.mkdir(path)
+
+  source_dir = input('Enter image source directory')
+
+  for filename in os.listdir(source_dir):
     # Check if the file is a PNG file
     if filename.endswith(".png"):
       # Open the image file
-      image_path = os.path.join(input_dir, filename)
+      image_path = os.path.join(source_dir, filename)
       
       #Load image
       img = Image.open(image_path)
 
       #Save new image without metadata
-      new_file_path = os.path.join(input_dir, 'no_metadata_' + filename)
+      new_file_path = os.path.join(source_dir, 'no_metadata_' + filename)
       img.save(new_file_path)
       print(f"Saved image without metadata: {new_file_path}")
 
@@ -78,6 +85,7 @@ def print_menu():
   elif choice == '3':
     print('Exiting ...')
     exit(0)
+
 
 
 print_menu()
