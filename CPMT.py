@@ -9,34 +9,23 @@
         ComfyUI PNG Metadata Tool
 which can remove/read generation metadata.
 ===========================================
-ver.1.1
+ver.1.2
 '''
 
-# Add path argument, choice for create new files or replace
 
 from PIL import Image
 import json
 import os
 import sys
 
-'''
-#######################################
-with open("metadata.txt", "w") as f:
-        image = Image.open("pic.png")
-        metadata = image.info
-        result = str(metadata)
-        f.write(result)
-        f.close()
-        image.close()
-#######################################
-'''
+
 #input_dir = os.path.dirname(os.path.abspath(__file__))
 
 choice = input(
   "------------------------------------------\n"
   "Which type of function do you want to use?\n"
   "1. Remove metadata from image\n"
-  "2. to be added\n"
+  "2. Read metadata from image\n"
   "3. Exit\n"
   "------------------------------------------\n"
 )
@@ -49,7 +38,7 @@ def remove_metadata():
   path = os.path.join(parent_dir, dir_name)
   os.mkdir(path)
 
-  source_dir = input('Enter image source directory')
+  source_dir = input('Enter image source directory: ')
 
   for filename in os.listdir(source_dir):
     # Check if the file is a PNG file
@@ -66,6 +55,14 @@ def remove_metadata():
       print(f"Saved image without metadata: {new_file_path}")
 
 
+def read_metadata():
+  source_dir = input('Enter image source directory: ')
+
+  image = Image.open(source_dir)
+  print(image.info)
+  image.close()
+
+
 def print_menu():
   if choice in ["1", "2", "3"]:
     pass
@@ -77,15 +74,16 @@ def print_menu():
   if choice == '1':
     remove_metadata()
     print('Done')
+    exit(0)
 
   elif choice == '2':
-    exit(0)
+    read_metadata()
     print('Done')
+    exit(0)
 
   elif choice == '3':
     print('Exiting ...')
     exit(0)
-
 
 
 print_menu()
