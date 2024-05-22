@@ -9,7 +9,7 @@
         ComfyUI PNG Metadata Tool
 which can remove/read generation metadata.
 ===========================================
-ver.1.3
+ver.1.4
 '''
 
 
@@ -38,29 +38,37 @@ def remove_metadata():
   dir_name = input('Enter output directory name: ')
 
   path = os.path.join(parent_dir, dir_name)
-  os.mkdir(path)
 
-  for filename in os.listdir(source_dir):
-    # Check if the file is a PNG file
-    if filename.endswith(".png"):
-      # Open the image file
-      image_path = os.path.join(source_dir, filename)
-      
-      #Load image
-      img = Image.open(image_path)
+  try:
+    os.mkdir(path)
 
-      #Save new image without metadata
-      new_file_path = os.path.join(path, 'no_metadata_' + filename)
-      img.save(new_file_path)
-      print(f"Saved image without metadata: {new_file_path}")
+    for filename in os.listdir(source_dir):
+      # Check if the file is a PNG file
+      if filename.endswith(".png"):
+        # Open the image file
+        image_path = os.path.join(source_dir, filename)
+        #Load image
+        img = Image.open(image_path)
+        #Save new image without metadata
+        new_file_path = os.path.join(path, 'no_metadata_' + filename)
+        img.save(new_file_path)
+        print(f"Saved image without metadata: {new_file_path}")
+    print('Done')
+  except:
+    print('An error occurred!')
 
 
 def read_metadata():
   source_dir = input('Enter image source directory: ')
 
-  image = Image.open(source_dir)
-  print(image.info)
-  image.close()
+  try:
+    image = Image.open(source_dir)
+    print(image.info)
+    image.close()
+    print('Done')
+  except:
+    print("Wrong path!")
+    exit(0)
 
 
 def print_menu():
@@ -73,12 +81,10 @@ def print_menu():
 
   if choice == '1':
     remove_metadata()
-    print('Done')
     exit(0)
 
   elif choice == '2':
     read_metadata()
-    print('Done')
     exit(0)
 
   elif choice == '3':
