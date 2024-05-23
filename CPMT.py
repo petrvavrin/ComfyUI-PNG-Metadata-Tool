@@ -9,7 +9,7 @@
         ComfyUI PNG Metadata Tool
 which can remove/read generation metadata.
 ===========================================
-ver.1.4
+ver.1.5
 '''
 
 
@@ -17,9 +17,10 @@ from PIL import Image
 import json
 import os
 import sys
+from progress.bar import Bar
+import glob
 
 
-#input_dir = os.path.dirname(os.path.abspath(__file__))
 
 choice = input(
   "------------------------------------------\n"
@@ -40,9 +41,13 @@ def remove_metadata():
   path = os.path.join(parent_dir, dir_name)
 
   try:
+    pngCounter = len(glob.glob1(source_dir,"*.png"))
+    bar = Bar('Processing...', max=pngCounter, suffix = '%(percent).1f%% - ETA: %(eta)ds')
+
     os.mkdir(path)
 
     for filename in os.listdir(source_dir):
+
       # Check if the file is a PNG file
       if filename.endswith(".png"):
         # Open the image file
@@ -52,8 +57,10 @@ def remove_metadata():
         #Save new image without metadata
         new_file_path = os.path.join(path, 'no_metadata_' + filename)
         img.save(new_file_path)
-        print(f"Saved image without metadata: {new_file_path}")
-    print('Done')
+        bar.next()
+
+    bar.finish()
+    print('Done!')
   except:
     print('An error occurred!')
 
