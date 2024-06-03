@@ -9,15 +9,13 @@
         ComfyUI PNG Metadata Tool
 which can remove/read generation metadata.
 ===========================================
-ver.1.5
+ver.1.51
 '''
 
 
 from PIL import Image
-import json
-import os
-import sys
 from progress.bar import Bar
+import os
 import glob
 
 
