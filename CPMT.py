@@ -9,7 +9,7 @@
         ComfyUI PNG Metadata Tool
 which can remove/read generation metadata.
 ===========================================
-ver.1.6
+ver.1.7
 '''
 
 
