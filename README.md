@@ -4,7 +4,7 @@
 ## Overview
 
 C.P.M.T. can remove/read generation metadata from the ComfyUI output image.
-<img src="https://raw.githubusercontent.com/petrvavrin/ComfyUI-PNG-Metadata-Tool/master/CPMT_v1.drawio.png" width="800px">
+<img src="https://raw.githubusercontent.com/petrvavrin/ComfyUI-PNG-Metadata-Tool/master/CPMT_v1.drawio.svg" width="800px">
 
 ## Usage
 
