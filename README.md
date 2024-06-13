@@ -25,3 +25,6 @@ Upon running the script, you will be prompted to choose between the following op
 
 4. **Exit:** 
    - Terminates the script.
+## To Do List
+- [ ] Add validation of existing hashes
+<img src="https://raw.githubusercontent.com/petrvavrin/ComfyUI-PNG-Metadata-Tool/master/CPMT_to_do.svg" width="400px">
