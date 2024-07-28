@@ -9,7 +9,7 @@
         ComfyUI PNG Metadata Tool
 which can remove/read generation metadata.
 ===========================================
-ver.1.7
+ver.1.71
 '''
 
 
@@ -60,6 +60,7 @@ def remove_metadata_and_hash():
         #Save new image without metadata
         new_file_path = os.path.join(path2, 'no_metadata_' + filename)
         img.save(new_file_path)
+        img.close()
         bar.next()
 
     bar.finish()
@@ -95,6 +96,7 @@ def remove_metadata_and_hash():
         #Load image
         img = open(image_path, 'rb')
         data = img.read()
+        img.close()
         md5_returned = hashlib.md5(data).hexdigest()
 
 
@@ -135,6 +137,7 @@ def remove_metadata():
         #Save new image without metadata
         new_file_path = os.path.join(path, 'no_metadata_' + filename)
         img.save(new_file_path)
+        img.close()
         bar.next()
 
     bar.finish()
